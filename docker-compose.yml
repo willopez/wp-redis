@@ -1,0 +1,16 @@
+version: '2'
+services:
+  redis:
+    image: redis:4.0.2-alpine
+    container_name: wp-redis
+    command: redis-server --appendonly yes
+    volumes:
+      - redis-data:/data
+
+volumes:
+  redis-data:
+
+networks:
+  default:
+    external:
+      name: backend
